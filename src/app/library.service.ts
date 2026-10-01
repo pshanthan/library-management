@@ -8,10 +8,12 @@ import { Title } from '@angular/platform-browser';
 })
 export class LibraryService {
   constructor() {}
-  book = new BehaviorSubject<Book>({
-    title: 'BookOne',
-    author: 'authorOne',
-    pages: 200,
-    instock: true,
-  });
+  book = new BehaviorSubject<Book[]>([
+    {
+      title: 'BookOne',
+      author: 'authorOne',
+      pages: 200,
+      instock: true,
+    },
+  ]);
 }
