@@ -21,7 +21,7 @@ export class LibraryService {
     return bookStream;
   }
   addBook(b: Book) {
-    b.id = Number(dateTimestampProvider);
-    this.books = [...this.books, b];
+    b.id = Date.now();
+    this.book.next([...this.book.value, b]);
   }
 }
