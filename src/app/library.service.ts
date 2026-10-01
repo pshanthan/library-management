@@ -22,5 +22,6 @@ export class LibraryService {
   }
   addBook(b: Book) {
     b.id = Number(dateTimestampProvider);
+    this.books = [...this.books, b];
   }
 }
