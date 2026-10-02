@@ -31,4 +31,11 @@ export class BooklistComponent implements OnInit {
   getBooks() {
     this.libraryService.getBooks().subscribe((b) => (this.books = b));
   }
+  onSubmit(){
+    const b = this.bookList.getRawValue();
+    const newBook : Book{
+  
+    }
+    this.libraryService.addBook(b)
+  }
 }
