@@ -23,14 +23,12 @@ export class AddbookComponent implements OnInit {
     pages: new FormControl('', Validators.required),
     inStock: new FormControl('', Validators.required),
   });
+  
+   editingID  : number  | null = null;
+   this.editingID =  Number(this.activatedRoute.snapshot.paramMap.get('id'));
   ngOnInit(): void {
-    const editingID = this.activatedRoute.snapshot.paramMap.get('id');
     if(editingID){
-      
-    }
-    }else{
-      this.libraryService.getBooks();
-    }
+
   }
   onSubmit() {
     const b = this.addBookForm.getRawValue();
