@@ -31,7 +31,7 @@ export class AddbookComponent implements OnInit {
 
   ngOnInit(): void {
     const idParam = Number(this.activatedRoute.snapshot.paramMap.get('id'));
-    if (idParam) {
+    if (idParam !== null) {
       this.editingID = Number(idParam);
       this.libraryService.getBooks().subscribe((books) => {
         const found = books.find((b) => b.id === this.editingID);
