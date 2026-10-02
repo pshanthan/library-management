@@ -1,1 +1,7 @@
-<p>addbook works!</p>
+<form [formGroup]="addBookForm" (ngSubmit)="onSubmit()">
+  <input formControlName="name" />
+  <input formControlName="title" />
+  <input formControlName="pages" />
+  <input formControlName="instock" />
+  <button type="submit" [disabled]="addBookForm.invalid"></button>
+</form>
