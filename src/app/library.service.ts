@@ -6,7 +6,6 @@ import { Book } from '../models/Book';
 })
 export class LibraryService {
   constructor() {}
-  books: Book[] = [];
   private book = new BehaviorSubject<Book[]>([
     {
       title: 'BookOne',
