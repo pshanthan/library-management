@@ -3,5 +3,5 @@
     {{ b.id }} - {{ b.title }} - {{ b.author }} - {{ b.pages }} -
     {{ b.instock }}
   </div>
-  <button (click)="updateBook(b)">Edit</button>
+  <button (click)="updateBook(b)" [routerLink]="['/edit', b.id]">Edit</button>
 </div>
