@@ -5,8 +5,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Title } from '@angular/platform-browser';
 import { LibraryService } from '../library.service';
+import { Book } from '../../models/Book';
 
 @Component({
   selector: 'app-addbook',
@@ -17,10 +17,19 @@ import { LibraryService } from '../library.service';
 export class AddbookComponent {
   constructor(private libraryService: LibraryService) {}
   addBookForm = new FormGroup({
-    name: new FormControl('', Validators.required),
+    author: new FormControl('', Validators.required),
     title: new FormControl('', Validators.required),
     pages: new FormControl('', Validators.required),
     inStock: new FormControl('', Validators.required),
   });
-  onSubmit() {}
+  onSubmit() {
+    const b = this.addBookForm.getRawValue();
+    const addedBook: Book = {
+      title: String(b.title),
+      pages: Number(b.pages),
+      author: String(b.author),
+      instock: Boolean(b.inStock),
+    };
+    this.libraryService.addBook(addedBook);
+  }
 }
