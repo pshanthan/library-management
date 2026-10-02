@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -14,7 +14,7 @@ import { Book } from '../../models/Book';
   templateUrl: './addbook.component.html',
   styleUrl: './addbook.component.css',
 })
-export class AddbookComponent {
+export class AddbookComponent implements OnInit {
   constructor(private libraryService: LibraryService) {}
   addBookForm = new FormGroup({
     author: new FormControl('', Validators.required),
@@ -22,6 +22,9 @@ export class AddbookComponent {
     pages: new FormControl('', Validators.required),
     inStock: new FormControl('', Validators.required),
   });
+  ngOnInit(): void {
+    this.onSubmit();
+  }
   onSubmit() {
     const b = this.addBookForm.getRawValue();
     const addedBook: Book = {
