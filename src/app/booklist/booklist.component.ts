@@ -1,10 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { LibraryService } from '../library.service';
 import { Book } from '../../models/Book';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-booklist',
-  imports: [],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './booklist.component.html',
   styleUrl: './booklist.component.css',
 })
