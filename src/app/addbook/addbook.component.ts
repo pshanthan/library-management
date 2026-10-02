@@ -25,9 +25,9 @@ export class AddbookComponent implements OnInit {
   }
 );
   
-   editingID  : number  | null = null;
+  editingID  : number  | null = null;
+  
   ngOnInit(): void {
-    
    const idParam =  Number(this.activatedRoute.snapshot.paramMap.get('id'));
     if(idParam){
       this.editingID = Number(idParam);
