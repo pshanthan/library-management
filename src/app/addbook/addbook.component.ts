@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { LibraryService } from '../library.service';
 import { Book } from '../../models/Book';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-addbook',
@@ -15,7 +16,7 @@ import { Book } from '../../models/Book';
   styleUrl: './addbook.component.css',
 })
 export class AddbookComponent implements OnInit {
-  constructor(private libraryService: LibraryService) {}
+  constructor(private libraryService: LibraryService, private activatedRoute :ActivatedRoute) {}
   addBookForm = new FormGroup({
     author: new FormControl('', Validators.required),
     title: new FormControl('', Validators.required),
@@ -23,7 +24,13 @@ export class AddbookComponent implements OnInit {
     inStock: new FormControl('', Validators.required),
   });
   ngOnInit(): void {
-    this.onSubmit();
+    const editingID = this.activatedRoute.snapshot.paramMap.get('id');
+    if(editingID){
+      
+    }
+    }else{
+      this.libraryService.getBooks();
+    }
   }
   onSubmit() {
     const b = this.addBookForm.getRawValue();
