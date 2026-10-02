@@ -4,11 +4,11 @@ import { AddbookComponent } from './addbook/addbook.component';
 
 export const routes: Routes = [
   {
-    path: '/bookList',
+    path: 'bookList',
     component: BooklistComponent,
   },
   {
-    path: '/addBook',
+    path: 'addBook',
     component: AddbookComponent,
   },
 ];
