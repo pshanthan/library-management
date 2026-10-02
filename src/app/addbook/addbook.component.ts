@@ -60,7 +60,6 @@ export class AddbookComponent implements OnInit {
     } else {
       this.libraryService.addBook(addedBook);
     }
-    this.libraryService.addBook(addedBook);
     this.addBookForm.reset();
   }
 }
