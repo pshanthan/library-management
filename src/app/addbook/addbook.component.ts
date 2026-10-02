@@ -22,13 +22,26 @@ export class AddbookComponent implements OnInit {
     title: new FormControl('', Validators.required),
     pages: new FormControl('', Validators.required),
     inStock: new FormControl('', Validators.required),
-  });
+  }
+);
   
    editingID  : number  | null = null;
-   this.editingID =  Number(this.activatedRoute.snapshot.paramMap.get('id'));
   ngOnInit(): void {
-    if(editingID){
-
+    
+   const idParam =  Number(this.activatedRoute.snapshot.paramMap.get('id'));
+    if(idParam){
+      this.editingID = Number(idParam);
+      this.libraryService.getBooks().subscribe((books) => {
+        const found = books.find((b) => b.id === this.editingID)
+        if(found){
+          this.addBookForm.patchValue({
+            author : found.author,
+            title : found.title,
+            pages : String(found.pages),
+            inStock : found.instock
+          })
+        }
+      })
   }
   onSubmit() {
     const b = this.addBookForm.getRawValue();
