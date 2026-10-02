@@ -31,5 +31,6 @@ export class AddbookComponent {
       instock: Boolean(b.inStock),
     };
     this.libraryService.addBook(addedBook);
+    this.addBookForm.reset();
   }
 }
