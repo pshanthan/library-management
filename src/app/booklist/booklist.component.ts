@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LibraryService } from '../library.service';
 import { Book } from '../../models/Book';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-booklist',
@@ -18,24 +13,12 @@ export class BooklistComponent implements OnInit {
   constructor(private libraryService: LibraryService) {}
 
   books: Book[] = [];
-  bookList = new FormGroup({
-    name: new FormControl('', Validators.required),
-    title: new FormControl('', Validators.required),
-    pages: new FormControl('', Validators.required),
-    inStock: new FormControl('', Validators.required),
-  });
+
   ngOnInit(): void {
     this.getBooks();
   }
 
   getBooks() {
     this.libraryService.getBooks().subscribe((b) => (this.books = b));
-  }
-  onSubmit(){
-    const b = this.bookList.getRawValue();
-    const newBook : Book{
-  
-    }
-    this.libraryService.addBook(b)
   }
 }
