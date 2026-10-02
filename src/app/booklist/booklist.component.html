@@ -1,7 +1,6 @@
-<form [formGroup]="bookList" (ngSubmit)="onSubmit()">
-  <div formControlName="name">Name</div>
-  <div formControlName="title">Title</div>
-  <div formControlName="pages">Pages</div>
-  <div formControlName="inStock">Availability</div>
-  <button type="submit" [disabled]="bookList.setValidators.invalid"></button>
-</form>
+<div *ngFor="let b of books">
+  <div>
+    {{ b.id }} - {{ b.title }} - {{ b.author }} - {{ b.pages }} -
+    {{ b.instock }}
+  </div>
+</div>
