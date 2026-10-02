@@ -24,12 +24,9 @@ export class LibraryService {
     b.id = Date.now();
     this.book.next([...this.book.value, b]);
   }
-  updateBook(b: Book) {
-    const editBookId = b.id;
-    const selectedBook = this.books.find((x) => x.id === b.id);
-    selectedBook.author = b.author;
-    selectedBook.instock = b.instock;
-    selectedBook.pages = b.pages;
-    selectedBook.title = b.title;
+  updateBook(updated: Book) {
+    const current = this.book.value;
+    const nextList = current.map((b) => (b.id === updated.id ? updated : b));
+    this.book.next(nextList);
   }
 }
